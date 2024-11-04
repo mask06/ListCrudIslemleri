@@ -1,0 +1,45 @@
+﻿@model List<ListCrudIslemleriOdev3.Models.Book>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitap Listesi</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Kitap Listesi</h2>
+    <a href="@Url.Action("Create", "Book")" class="btn btn-primary mb-3">Yeni Kitap Ekle</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>Yazar</th>
+                <th>Yayın Yılı</th>
+                <th>Tür</th>
+                <th>Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.PublishedYear</td>
+                    <td>@book.Price</td>
+                    <td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Book", new { id = book.Id })" class="btn btn-warning btn-sm">Düzenle</a>
+                            <a href="@Url.Action("Delete", "Book", new { id = book.Id })" class="btn btn-danger btn-sm">Sil</a>
+                        </td>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
